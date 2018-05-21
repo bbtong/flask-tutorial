@@ -30,7 +30,10 @@ def create_app(test_config=None):
         return 'Hello, World!'
 
     # import init_app func from db.py to sync sql
-    from . import db
+    from . import db, auth
     db.init_app(app)
+
+    app.register_blueprint(auth.bp)
+
 
     return app
